@@ -4,14 +4,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll(".carousel-item");
 
   let currentIndex = 0;
-  const itemWidth = items[0].offsetWidth;
   const gap = 16; // 1rem gap
-  const visibleItems = 2;
+
+  // Función para determinar el número de elementos visibles según el ancho de la pantalla
+  function getVisibleItems() {
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1200) {
+      return 4; // Desktop
+    } else if (windowWidth >= 768) {
+      return 3; // Tablet
+    } else {
+      return 2; // Mobile (mantenemos 2 elementos en todas las vistas móviles)
+    }
+  }
+
+  let visibleItems = getVisibleItems();
   const totalItems = items.length;
 
   // Función para mover el carrusel
   function moveCarousel() {
     currentIndex = (currentIndex + 1) % (totalItems - visibleItems + 1);
+    const itemWidth = items[0].offsetWidth;
     const offset = currentIndex * (itemWidth + gap);
     track.style.transform = `translateX(-${offset}px)`;
   }
@@ -62,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ajustar el carrusel al tamaño de la ventana
   function adjustCarousel() {
     const containerWidth = carousel.offsetWidth;
+    visibleItems = getVisibleItems();
     const newItemWidth = containerWidth / visibleItems - gap;
 
     items.forEach((item) => {
@@ -70,9 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Actualizar el ancho del track
     track.style.width = `${(newItemWidth + gap) * totalItems}px`;
+
+    // Resetear la posición del carrusel
+    currentIndex = 0;
+    track.style.transform = "translateX(0)";
   }
 
   // Ajustar al cargar y al cambiar el tamaño de la ventana
   adjustCarousel();
-  window.addEventListener("resize", adjustCarousel);
+  window.addEventListener("resize", () => {
+    clearInterval(interval);
+    adjustCarousel();
+    interval = setInterval(moveCarousel, 5000);
+  });
 });

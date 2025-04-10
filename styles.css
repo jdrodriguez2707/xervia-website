@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -25,7 +25,11 @@ body {
 header {
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   padding: 1rem;
   text-align: center;
   box-shadow: 0 4px 10px rgba(210, 41, 230, 0.2);
@@ -55,25 +59,30 @@ h1 {
 }
 
 main {
-  max-width: 1200px;
+  max-width: 940px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
 .content-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+  justify-items: center;
   gap: 2rem;
   margin-bottom: 3rem;
 }
 
 .content-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: white;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   border: 1px solid rgba(210, 41, 230, 0.1);
+  max-width: 375px;
 }
 
 .content-card:hover {
@@ -125,7 +134,11 @@ main {
   width: calc(100% - 2rem);
   margin: 0 1rem 1.2rem;
   padding: 0.8rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: white;
   border: none;
   border-radius: var(--border-radius);
@@ -143,6 +156,7 @@ main {
 .carousel-section {
   margin: 3rem 0;
   overflow: hidden;
+  padding: 1rem 0;
 }
 
 .carousel-container {
@@ -151,44 +165,49 @@ main {
   scrollbar-width: thin;
   scrollbar-color: var(--primary-color) var(--background-color);
   cursor: grab;
+  padding: 1rem 0;
 }
 
 .carousel-track {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.5rem;
+  padding: 0 1rem;
   width: max-content;
   transition: transform 0.5s ease;
 }
 
 .carousel-item {
-  width: calc(25% - 0.75rem);
-  height: 150px;
-  background-color: var(--accent-color);
-  border-radius: 8px;
+  width: 180px;
+  border-radius: 12px;
   flex-shrink: 0;
   position: relative;
   transition: transform 0.3s ease;
-  border: 1px solid rgba(210, 41, 230, 0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
 .carousel-item:hover {
   transform: scale(1.05);
-  border-color: rgba(210, 41, 230, 0.3);
+  box-shadow: 0 8px 25px rgba(210, 41, 230, 0.2);
 }
 
-.carousel-item::after {
-  content: '🖼️';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  color: var(--primary-color);
+.carousel-item:hover img {
+  transform: scale(1.1);
 }
 
 footer {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: white;
   text-align: center;
   padding: 1.5rem;
@@ -196,6 +215,47 @@ footer {
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   box-shadow: 0 -4px 10px rgba(210, 41, 230, 0.2);
+}
+
+/* Media Queries para el carrusel */
+@media (min-width: 1200px) {
+  .carousel-item {
+    width: 200px;
+  }
+
+  .carousel-section {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .carousel-item {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-item {
+    width: 160px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-item {
+    width: 140px;
+  }
+
+  .carousel-track {
+    gap: 1rem;
+  }
 }
 
 /* Estilos para la barra de desplazamiento */
@@ -209,26 +269,14 @@ footer {
 }
 
 .carousel-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   border-radius: 4px;
 }
 
 .carousel-container::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .carousel-item {
-    width: calc(100% - 1rem);
-    height: 120px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
 }
