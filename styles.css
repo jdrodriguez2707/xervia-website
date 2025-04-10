@@ -1,11 +1,12 @@
 :root {
-  --primary-color: #2d3250;
-  --secondary-color: #424769;
-  --accent-color: #7077a1;
-  --background-color: #f6f6f6;
-  --text-color: #333;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --primary-color: #d229e6;
+  --secondary-color: #035ff7;
+  --accent-color: rgba(3, 95, 247, 0.1);
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --card-shadow: 0 4px 15px rgba(210, 41, 230, 0.1);
   --transition: all 0.3s ease;
+  --border-radius: 40px;
 }
 
 * {
@@ -24,38 +25,33 @@ body {
 header {
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   padding: 1rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(210, 41, 230, 0.2);
 }
 
 .logo {
   width: 80px;
   height: 80px;
-  background-color: rgba(112, 119, 161, 0.2);
+  background-color: white;
   border-radius: 50%;
   margin: 0 auto 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.1);
   transition: var(--transition);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(210, 41, 230, 0.3);
 }
 
 .logo:hover {
-  transform: scale(1.05);
-  background-color: rgba(112, 119, 161, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(210, 41, 230, 0.5);
 }
 
 h1 {
   color: white;
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  opacity: 0.9;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 main {
@@ -72,25 +68,23 @@ main {
 }
 
 .content-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
+  background: white;
+  border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(210, 41, 230, 0.1);
 }
 
 .content-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(210, 41, 230, 0.15);
+  border-color: rgba(210, 41, 230, 0.3);
 }
 
 .image-placeholder {
   width: 100%;
   height: 250px;
-  position: relative;
-  overflow: hidden;
 }
 
 .category-image {
@@ -131,10 +125,10 @@ main {
   width: calc(100% - 2rem);
   margin: 0 1rem 1.2rem;
   padding: 0.8rem;
-  background-color: var(--accent-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
   font-weight: 600;
@@ -142,8 +136,8 @@ main {
 }
 
 .read-more:hover {
-  background-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(210, 41, 230, 0.3);
 }
 
 .carousel-section {
@@ -155,7 +149,7 @@ main {
   width: 100%;
   overflow-x: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--accent-color) var(--background-color);
+  scrollbar-color: var(--primary-color) var(--background-color);
   cursor: grab;
 }
 
@@ -168,17 +162,19 @@ main {
 }
 
 .carousel-item {
-  width: calc(50% - 0.5rem); /* 2 elementos visibles */
-  height: 200px; /* Aumentando la altura para mejor visualización */
-  background-color: var(--secondary-color);
+  width: calc(25% - 0.75rem);
+  height: 150px;
+  background-color: var(--accent-color);
   border-radius: 8px;
   flex-shrink: 0;
   position: relative;
   transition: transform 0.3s ease;
+  border: 1px solid rgba(210, 41, 230, 0.1);
 }
 
 .carousel-item:hover {
   transform: scale(1.05);
+  border-color: rgba(210, 41, 230, 0.3);
 }
 
 .carousel-item::after {
@@ -188,16 +184,18 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
+  color: var(--primary-color);
 }
 
 footer {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   text-align: center;
   padding: 1.5rem;
   margin-top: 3rem;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
+  box-shadow: 0 -4px 10px rgba(210, 41, 230, 0.2);
 }
 
 /* Estilos para la barra de desplazamiento */
@@ -211,7 +209,7 @@ footer {
 }
 
 .carousel-container::-webkit-scrollbar-thumb {
-  background: var(--accent-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border-radius: 4px;
 }
 
@@ -226,7 +224,7 @@ footer {
   }
 
   .carousel-item {
-    width: calc(100% - 1rem); /* 1 elemento visible en móvil */
+    width: calc(100% - 1rem);
     height: 120px;
   }
 
