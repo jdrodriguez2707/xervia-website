@@ -282,3 +282,40 @@ footer {
 .carousel-container::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
+
+.blog-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  border: 1px solid rgba(210, 41, 230, 0.1);
+}
+
+.blog-description-text {
+  color: var(--text-color);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .blog-description {
+    margin: 3rem 1rem;
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-description {
+    margin: 2rem 1rem;
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+}
