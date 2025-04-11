@@ -146,6 +146,8 @@ main {
   transition: var(--transition);
   font-weight: 600;
   letter-spacing: 0.5px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .read-more:hover {
